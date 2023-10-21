@@ -1,6 +1,6 @@
 # meals_world
 
-App about all kinds of meal their categories categories. Data fetched using the api https://www.themealdb.com/api.php.
+App about all kinds of meals and their categories. Data fetched using the api https://www.themealdb.com/api.php.
 
 Some screenshots:
 
