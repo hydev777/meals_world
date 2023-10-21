@@ -1,0 +1,18 @@
+name: meals_repository
+description: meals repository.
+version: 1.0.0
+
+environment:
+  sdk: ^3.1.3
+
+dependencies:
+  http: ^1.1.0
+  equatable: ^2.0.5
+
+  meals_api:
+    path: ../meals_api
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
+  mocktail: ^1.0.1
