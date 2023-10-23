@@ -50,7 +50,7 @@ void main() {
     );
 
     blocTest<MealCategoriesCubit, MealCategoriesState>(
-      "anime list is empty",
+      "category list is empty",
       build: () {
         when(() => mealsRepository.fetchMealCategories()).thenAnswer(
           (_) async => const MealCategories(categories: []),
@@ -72,7 +72,7 @@ void main() {
     );
 
     blocTest<MealCategoriesCubit, MealCategoriesState>(
-      "anime list is complete",
+      "category list is complete",
       build: () {
         when(() => mealsRepository.fetchMealCategories()).thenAnswer(
           (_) async => mealCategoriesExpected,
