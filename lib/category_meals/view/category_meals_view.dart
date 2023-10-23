@@ -137,6 +137,12 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
               );
             }
 
+            if (state.categoryMealsStatus == CategoryMealsStatus.empty) {
+              return const Center(
+                child: Text("Categories are empty"),
+              );
+            }
+
             if (state.categoryMealsStatus == CategoryMealsStatus.error) {
               return const Center(
                 child: Text("An error has ocurred"),

@@ -10,6 +10,7 @@ class MockHttpClient extends Mock implements http.Client {}
 void main() {
   late Uri mealsCategoriesUrl;
   late Uri categoryMealsUrl;
+  late Uri mealDetailsUrl;
 
   group("Meals", () {
     late http.Client httpClient;
@@ -31,6 +32,11 @@ void main() {
         "www.themealdb.com",
         "/api/json/v1/1/filter.php",
         {"c": "Beef"},
+      );
+      mealDetailsUrl = Uri.https(
+        "www.themealdb.com",
+        "/api/json/v1/1/lookup.php",
+        {"i": "1"},
       );
     });
 
@@ -126,6 +132,55 @@ void main() {
 
       test("returns the response", () async {
         final response = await subject.fetchCategoryMeals("Beef");
+
+        expect(response.statusCode, expectedResponse.statusCode);
+        expect(response.body, expectedResponse.body);
+      });
+    });
+
+    group("fetch meal details", () {
+      setUp(() {
+        when(() => httpClient.get(mealDetailsUrl)).thenAnswer(
+          (_) async => expectedResponse,
+        );
+      });
+
+      test("throws HttpException when http client throws exception", () {
+        when(() => httpClient.get(mealDetailsUrl)).thenThrow(Exception());
+
+        expect(
+          () => subject.fetchMealDetails("1"),
+          throwsA(isA<HttpException>()),
+        );
+      });
+
+      test(
+        'throws HttpRequestFailure when response status code is not 200',
+        () {
+          when(() => httpClient.get(mealDetailsUrl)).thenAnswer(
+            (_) async => http.Response('', 400),
+          );
+
+          expect(
+            () => subject.fetchMealDetails("1"),
+            throwsA(
+              isA<HttpRequestFailure>()
+                  .having((error) => error.statusCode, 'statusCode', 400),
+            ),
+          );
+        },
+      );
+
+      test("sends the request correctly", () async {
+        await subject.fetchMealDetails("1");
+
+        verify(
+          () => httpClient.get(mealDetailsUrl),
+        ).called(1);
+      });
+
+      test("returns the response", () async {
+        final response = await subject.fetchMealDetails("1");
 
         expect(response.statusCode, expectedResponse.statusCode);
         expect(response.body, expectedResponse.body);

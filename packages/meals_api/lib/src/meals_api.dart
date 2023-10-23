@@ -56,4 +56,24 @@ class MealsApi {
 
     return response;
   }
+
+  Future<http.Response> fetchMealDetails(String mealId) async {
+    http.Response? response;
+    Uri mealDetails = _baseUrl!.replace(
+      path: "/api/json/v1/1/lookup.php",
+      queryParameters: {"i": mealId},
+    );
+
+    try {
+      response = await _httpClient.get(mealDetails);
+    } catch (err) {
+      throw HttpException();
+    }
+
+    if (response.statusCode != 200) {
+      throw HttpRequestFailure(response.statusCode);
+    }
+
+    return response;
+  }
 }

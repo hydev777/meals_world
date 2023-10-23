@@ -21,11 +21,9 @@ void main() {
         3,
         (index) => Category(
           idCategory: "$index",
-          strCategory: "Beef",
-          strCategoryThumb:
-              "https://www.themealdb.com/images/category/beef.png",
-          strCategoryDescription:
-              "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times.[1] Beef is a source of high-quality protein and essential nutrients.[2]",
+          strCategory: "test",
+          strCategoryThumb: "https://test.com",
+          strCategoryDescription: "test",
         ),
       ),
     );
@@ -34,12 +32,66 @@ void main() {
       meals: List.generate(
         3,
         (index) => Meal(
-          strMeal: "Beef and Mustard Pie",
-          strMealThumb:
-              "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg",
+          strMeal: "test",
+          strMealThumb: "https://test.com",
           idMeal: "$index",
         ),
       ),
+    );
+
+    final mealDetailsExpected = MealDetail(
+      meals: [
+        MealDetails(
+          idMeal: "1",
+          strMeal: "test",
+          strCategory: "test",
+          strArea: "test",
+          strInstructions: "test",
+          strMealThumb: "https://test.com",
+          strTags: "test,test",
+          strYoutube: "https://test.com",
+          strIngredient1: "test",
+          strIngredient2: "test",
+          strIngredient3: "test",
+          strIngredient4: "test",
+          strIngredient5: "test",
+          strIngredient6: "test",
+          strIngredient7: "test",
+          strIngredient8: "test",
+          strIngredient9: "test",
+          strIngredient10: "test",
+          strIngredient11: "test",
+          strIngredient12: "test",
+          strIngredient13: "test",
+          strIngredient14: "test",
+          strIngredient15: "test",
+          strIngredient16: "test",
+          strIngredient17: "test",
+          strIngredient18: "test",
+          strIngredient19: "test",
+          strIngredient20: "test",
+          strMeasure1: "test",
+          strMeasure2: "test",
+          strMeasure3: "test",
+          strMeasure4: "test",
+          strMeasure5: "test",
+          strMeasure6: "test",
+          strMeasure7: "test",
+          strMeasure8: "test",
+          strMeasure9: "test",
+          strMeasure10: "test",
+          strMeasure11: "test",
+          strMeasure12: "test",
+          strMeasure13: "test",
+          strMeasure14: "test",
+          strMeasure15: "test",
+          strMeasure16: "test",
+          strMeasure17: "test",
+          strMeasure18: "test",
+          strMeasure19: "test",
+          strMeasure20: "test",
+        ),
+      ],
     );
 
     setUp(() {
@@ -76,25 +128,27 @@ void main() {
         );
       });
 
-      // test("fetch list of meals is null", () async {
-      //   when(() => mealsApi.fetchCategoryMeals("Beef")).thenAnswer(
-      //     (_) async => http.Response(
-      //       {
-      //         "meals": null,
-      //       }.toString(),
-      //       200,
-      //     ),
-      //   );
-
-      //   final categoryMeals = await subject.fetchCategoryMeals("Beef");
-
-      //   expect(categoryMeals.meals, isNull);
-      // });
-
       test("fetch list of meals", () async {
         final categoryMeals = await subject.fetchCategoryMeals("Beef");
 
         expect(categoryMeals, categoryMealsExpected);
+      });
+    });
+
+    group("fetch meal details", () {
+      setUp(() {
+        when(() => mealsApi.fetchMealDetails("1")).thenAnswer(
+          (_) async => http.Response(
+            json.encode(mealDetailsExpected.toJson()),
+            200,
+          ),
+        );
+      });
+
+      test("fetch meal details", () async {
+        final mealDetails = await subject.fetchMealsDetails("1");
+
+        expect(mealDetails, mealDetailsExpected);
       });
     });
   });
