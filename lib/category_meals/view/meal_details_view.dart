@@ -42,6 +42,13 @@ class _MealDetailsViewState extends State<MealDetailsView> {
               }
 
               if (state.mealDetailsStatus == MealDetailsStatus.success) {
+                final mealDetails = context
+                    .watch<CategoryMealsCubit>()
+                    .state
+                    .mealDetail!
+                    .meals!
+                    .first;
+
                 return Container(
                   padding: const EdgeInsets.all(10),
                   child: Column(
@@ -126,340 +133,272 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                 children: <Widget>[
                                   ListView(
                                     children: [
+                                      mealDetails.strIngredient1 == null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient1 ??
+                                                    "-"),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient2 == null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient2 ??
+                                                    "-"),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient3 == null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient3 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient4 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient4 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient5 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient5 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient6 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient6 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient7 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient7 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient8 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient8 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient9 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient9 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient10 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient10 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient11 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient11 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient12 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient12 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient13 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient13 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
                                       Container(
                                         height: 50,
                                         decoration: const BoxDecoration(
                                           color: Colors.white,
                                         ),
                                         child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient1 ??
-                                              ""),
+                                          title: Text(
+                                              mealDetails.strIngredient14 ??
+                                                  ""),
                                         ),
                                       ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient2 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient3 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient4 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient5 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient6 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient7 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient8 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient9 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient10 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient11 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient12 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient13 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient14 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient15 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient16 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient17 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient18 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient19 ??
-                                              ""),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                        ),
-                                        child: ListTile(
-                                          title: Text(context
-                                                  .watch<CategoryMealsCubit>()
-                                                  .state
-                                                  .mealDetail!
-                                                  .meals!
-                                                  .first
-                                                  .strIngredient20 ??
-                                              ""),
-                                        ),
-                                      ),
+                                      mealDetails.strIngredient15 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient15 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient16 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient16 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient17 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient17 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient18 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient18 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient19 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient19 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
+                                      mealDetails.strIngredient20 != null
+                                          ? Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                color: Colors.white,
+                                              ),
+                                              child: ListTile(
+                                                title: Text(mealDetails
+                                                        .strIngredient20 ??
+                                                    ""),
+                                              ),
+                                            )
+                                          : const SizedBox.shrink(),
                                     ],
                                   ),
                                   ListView(
                                     children: [
-                                      Container(
+                                      Padding(
                                         padding: const EdgeInsets.all(10),
                                         child: Text(
-                                          context
-                                              .watch<CategoryMealsCubit>()
-                                              .state
-                                              .mealDetail!
-                                              .meals!
-                                              .first
-                                              .strInstructions!,
+                                          mealDetails.strInstructions!,
                                           style: const TextStyle(fontSize: 16),
                                         ),
                                       )
