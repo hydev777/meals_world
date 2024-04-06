@@ -24,7 +24,6 @@ class CategoryMealsCubit extends Cubit<CategoryMealsState> {
           await _mealsRepository.fetchCategoryMeals(categoryId);
 
       if (categoryMeals.meals!.isNotEmpty) {
-        print("========================>>> isNotEmpty");
         emit(
           state.copyWith(
             meals: categoryMeals,
@@ -42,6 +41,31 @@ class CategoryMealsCubit extends Cubit<CategoryMealsState> {
       emit(
         state.copyWith(
           categoryMealsStatus: CategoryMealsStatus.error,
+        ),
+      );
+    }
+  }
+
+  Future<void> onFetchMealDetails(String mealId) async {
+    emit(
+      state.copyWith(
+        mealDetailsStatus: MealDetailsStatus.loading,
+      ),
+    );
+
+    try {
+      final mealDetails = await _mealsRepository.fetchMealsDetails(mealId);
+
+      emit(
+        state.copyWith(
+          mealDetail: mealDetails,
+          mealDetailsStatus: MealDetailsStatus.success,
+        ),
+      );
+    } catch (err) {
+      emit(
+        state.copyWith(
+          mealDetailsStatus: MealDetailsStatus.error,
         ),
       );
     }

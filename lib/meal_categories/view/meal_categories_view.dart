@@ -16,9 +16,7 @@ class _MealCategoriesViewState extends State<MealCategoriesView> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await context.read<MealCategoriesCubit>().onFetchMealCategories();
-    });
+    context.read<MealCategoriesCubit>().onFetchMealCategories();
   }
 
   @override

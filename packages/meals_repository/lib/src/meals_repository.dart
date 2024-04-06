@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:meals_api/meals_api.dart';
 
 import 'models/models.dart';
 
@@ -16,16 +15,22 @@ class HttpRequestFailure implements Exception {
 
 class MealsRepository {
   MealsRepository({
-    required MealsApi mealsApi,
-  }) : _mealsApi = mealsApi;
+    required String baseUrl,
+    required http.Client httpClient,
+  })  : _httpClient = httpClient,
+        _baseUrl = Uri.parse(baseUrl);
 
-  final MealsApi _mealsApi;
+  final http.Client _httpClient;
+  final Uri? _baseUrl;
 
   Future<MealCategories> fetchMealCategories() async {
     http.Response? response;
+    Uri mealsCategoriesUrl = _baseUrl!.replace(
+      path: "/api/json/v1/1/categories.php",
+    );
 
     try {
-      response = await _mealsApi.fetchMealCategories();
+      response = await _httpClient.get(mealsCategoriesUrl);
     } catch (err) {
       throw HttpException();
     }
@@ -55,9 +60,13 @@ class MealsRepository {
 
   Future<Meals> fetchCategoryMeals(String categoryId) async {
     http.Response? response;
+    Uri categoryMeals = _baseUrl!.replace(
+      path: "/api/json/v1/1/filter.php",
+      queryParameters: {"c": categoryId},
+    );
 
     try {
-      response = await _mealsApi.fetchCategoryMeals(categoryId);
+      response = await _httpClient.get(categoryMeals);
     } catch (err) {
       throw HttpException();
     }
@@ -86,9 +95,13 @@ class MealsRepository {
 
   Future<MealDetail> fetchMealsDetails(String mealId) async {
     http.Response? response;
+    Uri mealDetails = _baseUrl!.replace(
+      path: "/api/json/v1/1/lookup.php",
+      queryParameters: {"i": mealId},
+    );
 
     try {
-      response = await _mealsApi.fetchMealDetails(mealId);
+      response = await _httpClient.get(mealDetails);
     } catch (err) {
       throw HttpException();
     }

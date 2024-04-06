@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import '../category_meals/cubit/category_meals_cubit.dart';
-import '../meal_categories/cubit/meal_categories_cubit.dart';
-import '../router/router.dart';
+import 'category_meals/cubit/category_meals_cubit.dart';
+import 'meal_categories/cubit/meal_categories_cubit.dart';
+import 'router.dart';
 
 class App extends StatelessWidget {
   const App({

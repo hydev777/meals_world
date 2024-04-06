@@ -1,20 +1,19 @@
 import 'dart:convert';
 
-import 'package:meals_api/meals_api.dart';
 import 'package:meals_repository/meals_repository.dart';
 import 'package:http/http.dart' as http;
-import 'package:meals_repository/src/models/models.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 
-class MockMealsApi extends Mock implements MealsApi {}
-
 void main() {
   group("Meals Repository", () {
+    late http.Client httpClient;
     late MealsRepository subject;
-    late MealsApi mealsApi;
+    late Uri mealsCategoriesUrl;
+    late Uri categoryMealsUrl;
+    late Uri mealDetailsUrl;
 
     final mealCategoriesExpected = MealCategories(
       categories: List.generate(
@@ -95,15 +94,32 @@ void main() {
     );
 
     setUp(() {
-      mealsApi = MockMealsApi();
+      httpClient = MockHttpClient();
+
+      mealsCategoriesUrl = Uri.https(
+        "www.themealdb.com",
+        "/api/json/v1/1/categories.php",
+      );
+      categoryMealsUrl = Uri.https(
+        "www.themealdb.com",
+        "/api/json/v1/1/filter.php",
+        {"c": "Beef"},
+      );
+      mealDetailsUrl = Uri.https(
+        "www.themealdb.com",
+        "/api/json/v1/1/lookup.php",
+        {"i": "1"},
+      );
+
       subject = MealsRepository(
-        mealsApi: mealsApi,
+        baseUrl: "https://www.themealdb.com",
+        httpClient: httpClient,
       );
     });
 
     group("fetch meal categories", () {
       setUp(() {
-        when(() => mealsApi.fetchMealCategories()).thenAnswer(
+        when(() => httpClient.get(mealsCategoriesUrl)).thenAnswer(
           (_) async => http.Response(
             json.encode(mealCategoriesExpected.toJson()),
             200,
@@ -120,7 +136,7 @@ void main() {
 
     group("fetch category meals", () {
       setUp(() {
-        when(() => mealsApi.fetchCategoryMeals("Beef")).thenAnswer(
+        when(() => httpClient.get(categoryMealsUrl)).thenAnswer(
           (_) async => http.Response(
             json.encode(categoryMealsExpected.toJson()),
             200,
@@ -137,7 +153,7 @@ void main() {
 
     group("fetch meal details", () {
       setUp(() {
-        when(() => mealsApi.fetchMealDetails("1")).thenAnswer(
+        when(() => httpClient.get(mealDetailsUrl)).thenAnswer(
           (_) async => http.Response(
             json.encode(mealDetailsExpected.toJson()),
             200,

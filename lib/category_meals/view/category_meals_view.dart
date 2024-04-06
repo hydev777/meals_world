@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
 import '../cubit/category_meals_cubit.dart';
@@ -34,6 +35,7 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: const Color(0xFFF9FAFA),
         body: BlocBuilder<CategoryMealsCubit, CategoryMealsState>(
           builder: (context, state) {
             if (state.categoryMealsStatus == CategoryMealsStatus.loading) {
@@ -79,53 +81,52 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
                       (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            // context.push(
-                            //     "/anime/character/${state.animeDetails!.characters![index].id}/quotes");
+                            context.push(
+                                "/meal-detail/${state.meals!.meals![index].idMeal}");
                           },
                           child: Container(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            height: 80,
+                            alignment: Alignment.centerRight,
                             decoration: BoxDecoration(
-                              color: const Color(0xFFEFEFEF),
-                              border: Border.all(
-                                color: const Color(0xFF303030),
-                                width: 3,
-                              ),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
                               boxShadow: const [
                                 BoxShadow(
-                                  color: Color(0xFF303030),
-                                  offset: Offset(3, 10),
-                                  blurStyle: BlurStyle.outer,
-                                  spreadRadius: -6,
+                                  color: Colors.black12,
+                                  offset: Offset(3, 3),
+                                  blurStyle: BlurStyle.normal,
+                                  spreadRadius: 1,
+                                  blurRadius: 2,
                                 ),
                               ],
                             ),
                             margin: const EdgeInsets.all(8),
                             child: ListTile(
                               contentPadding: const EdgeInsets.all(5),
-                              shape: Border.all(
-                                color: Colors.black,
-                              ),
-                              leading: Container(
-                                decoration: const BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black54,
-                                      offset: Offset(2, 2),
-                                      blurStyle: BlurStyle.outer,
-                                    ),
-                                  ],
-                                ),
-                                padding: const EdgeInsets.all(3),
-                                child: Image.network(
-                                  state.meals!.meals![index].strMealThumb!,
+                              leading: ClipRRect(
+                                borderRadius: BorderRadius.circular(10.0),
+                                child: Hero(
+                                  tag:
+                                      "meal-detail-${state.meals!.meals![index].idMeal}",
+                                  child: Image.network(
+                                    state.meals!.meals![index].strMealThumb!,
+                                  ),
                                 ),
                               ),
-                              title: Text(
-                                state.meals!.meals![index].strMeal!,
-                                style: const TextStyle(
-                                  color: Color(0xFF535353),
-                                  fontWeight: FontWeight.bold,
+                              title: Hero(
+                                tag:
+                                    "meal-detail-strMeal-${state.meals!.meals![index].idMeal}",
+                                child: Text(
+                                  state.meals!.meals![index].strMeal!,
+                                  style: const TextStyle(
+                                    color: Color(0xFF535353),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
+                              trailing: const Icon(Icons.arrow_forward),
                             ),
                           ),
                         );
