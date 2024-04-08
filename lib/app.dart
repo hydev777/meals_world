@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import 'category_meals/cubit/category_meals_cubit.dart';
+import 'category_meals/cubit/meals_cubit.dart';
 import 'meal_categories/cubit/categories_cubit.dart';
 import 'router.dart';
 

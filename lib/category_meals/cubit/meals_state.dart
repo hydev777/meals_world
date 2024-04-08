@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-part of 'category_meals_cubit.dart';
+part of 'meals_cubit.dart';
 
 enum CategoryMealsStatus { initial, loading, success, empty, error }
 

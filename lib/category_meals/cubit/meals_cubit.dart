@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-part 'category_meals_state.dart';
+part 'meals_state.dart';
 
 class MealsCubit extends Cubit<MealsState> {
   MealsCubit({

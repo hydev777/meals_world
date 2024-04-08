@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import '../cubit/category_meals_cubit.dart';
+import '../cubit/meals_cubit.dart';
 
 class MealsView extends StatefulWidget {
   const MealsView({
