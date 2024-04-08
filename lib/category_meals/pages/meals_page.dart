@@ -160,7 +160,7 @@ class _MealsViewState extends State<MealsView> {
                                   state.meals!.meals[index].strMeal,
                                   style: const TextStyle(
                                     color: Color(0xFF535353),
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.normal,
                                     fontSize: 16,
                                   ),
                                 ),

@@ -66,6 +66,8 @@ class _CategoriesViewState extends State<CategoriesView> {
                         tag:
                             "hero-meal-category-${state.mealCategories!.categories[index].idCategory}",
                         child: Image.network(
+                          height: 70,
+                          width: 70,
                           state.mealCategories!.categories[index]
                               .strCategoryThumb,
                           loadingBuilder: (context, child, loadingProgress) {
