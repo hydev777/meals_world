@@ -129,6 +129,27 @@ class _MealsViewState extends State<MealsView> {
                                       "meal-detail-${state.meals!.meals[index].idMeal}",
                                   child: Image.network(
                                     state.meals!.meals[index].strMealThumb,
+                                    loadingBuilder:
+                                        (context, child, loadingProgress) {
+                                      if (loadingProgress != null) {
+                                        return const CircularProgressIndicator();
+                                      } else {
+                                        return child;
+                                      }
+                                    },
+                                    frameBuilder: (context, child, frame,
+                                        wasSynchronouslyLoaded) {
+                                      if (wasSynchronouslyLoaded) {
+                                        return child;
+                                      } else {
+                                        return AnimatedOpacity(
+                                          opacity: frame == null ? 0 : 1,
+                                          duration: const Duration(seconds: 1),
+                                          curve: Curves.easeOut,
+                                          child: child,
+                                        );
+                                      }
+                                    },
                                   ),
                                 ),
                               ),
