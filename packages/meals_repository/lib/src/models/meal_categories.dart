@@ -2,10 +2,10 @@ import 'package:equatable/equatable.dart';
 
 class MealCategories extends Equatable {
   const MealCategories({
-    this.categories,
+    required this.categories,
   });
 
-  final List<Category>? categories;
+  final List<Category> categories;
 
   MealCategories copyWith({
     List<Category>? categories,
@@ -16,7 +16,7 @@ class MealCategories extends Equatable {
   }
 
   Map<String, dynamic> toJson() => {
-        "categories": categories!
+        "categories": categories
             .map(
               (category) => category.toJson(),
             )
@@ -31,16 +31,16 @@ class MealCategories extends Equatable {
 
 class Category extends Equatable {
   const Category({
-    this.idCategory,
-    this.strCategory,
-    this.strCategoryThumb,
-    this.strCategoryDescription,
+    required this.idCategory,
+    required this.strCategory,
+    required this.strCategoryThumb,
+    required this.strCategoryDescription,
   });
 
-  final String? idCategory;
-  final String? strCategory;
-  final String? strCategoryThumb;
-  final String? strCategoryDescription;
+  final String idCategory;
+  final String strCategory;
+  final String strCategoryThumb;
+  final String strCategoryDescription;
 
   Category copyWith({
     String? idCategory,

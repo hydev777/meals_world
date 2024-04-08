@@ -35,39 +35,32 @@ class _CategoriesViewState extends State<CategoriesView> {
             }
 
             if (state.mealCategoriesStatus == MealCategoriesStatus.success) {
-              return Column(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: state.mealCategories!.categories!.length,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.all(6.0),
-                          child: ListTile(
-                            onTap: () {
-                              context.push(
-                                "/meals/category/${state.mealCategories!.categories![index].strCategory}",
-                                extra: state.mealCategories!.categories![index],
-                              );
-                            },
-                            leading: Hero(
-                              tag:
-                                  "hero-meal-category-${state.mealCategories!.categories![index].idCategory}",
-                              child: Image.network(
-                                state.mealCategories!.categories![index]
-                                    .strCategoryThumb!,
-                              ),
-                            ),
-                            title: Text(
-                              state.mealCategories!.categories![index]
-                                  .strCategory!,
-                            ),
-                          ),
+              return ListView.builder(
+                itemCount: state.mealCategories!.categories.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: ListTile(
+                      onTap: () {
+                        context.push(
+                          "/meals/category/${state.mealCategories!.categories[index].strCategory}",
+                          extra: state.mealCategories!.categories[index],
                         );
                       },
+                      leading: Hero(
+                        tag:
+                            "hero-meal-category-${state.mealCategories!.categories[index].idCategory}",
+                        child: Image.network(
+                          state.mealCategories!.categories[index]
+                              .strCategoryThumb,
+                        ),
+                      ),
+                      title: Text(
+                        state.mealCategories!.categories[index].strCategory,
+                      ),
                     ),
-                  )
-                ],
+                  );
+                },
               );
             }
 

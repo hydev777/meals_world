@@ -52,7 +52,7 @@ class _MealsViewState extends State<MealsView> {
                       background: Hero(
                         tag: "hero-meal-category-${widget.category.idCategory}",
                         child: Image.network(
-                          widget.category.strCategoryThumb!,
+                          widget.category.strCategoryThumb,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -62,7 +62,7 @@ class _MealsViewState extends State<MealsView> {
                     child: Padding(
                       padding: const EdgeInsets.all(5),
                       child: Text(
-                        widget.category.strCategory!,
+                        widget.category.strCategory,
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,

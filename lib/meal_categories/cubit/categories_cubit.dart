@@ -22,7 +22,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
     try {
       final mealCategories = await _mealsRepository.fetchCategories();
 
-      if (mealCategories.categories!.isNotEmpty) {
+      if (mealCategories.categories.isNotEmpty) {
         emit(
           state.copyWith(
             mealCategories: mealCategories,
