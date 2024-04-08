@@ -44,12 +44,6 @@ class MealsRepository {
       return MealCategories(
         categories: (body["categories"] as List).map(
           (category) {
-            print({
-              "=====>>",
-              category["idCategory"],
-              category["strCategory"],
-            });
-
             return Category(
               idCategory: category["idCategory"],
               strCategory: category["strCategory"],
@@ -86,8 +80,6 @@ class MealsRepository {
       return Meals(
         meals: (body["meals"] as List<dynamic>).map(
           (meal) {
-            print(meal);
-
             return MealDetails(
                 strMeal: meal["strMeal"],
                 strMealThumb: meal["strMealThumb"],
