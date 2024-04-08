@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+
+import 'meals.dart';
 
 class MealDetail extends Equatable {
   const MealDetail({
@@ -29,11 +32,11 @@ class MealDetail extends Equatable {
       ];
 }
 
-class MealDetails {
+class MealDetails extends Meal {
   const MealDetails({
-    required this.idMeal,
-    required this.strMeal,
-    required this.strMealThumb,
+    required super.idMeal,
+    required super.strMeal,
+    required super.strMealThumb,
     this.strCategory,
     this.strArea,
     this.strInstructions,
@@ -81,9 +84,6 @@ class MealDetails {
     this.strMeasure20,
   });
 
-  final String idMeal;
-  final String strMeal;
-  final String strMealThumb;
   final String? strCategory;
   final String? strArea;
   final String? strInstructions;
@@ -130,10 +130,11 @@ class MealDetails {
   final String? strMeasure19;
   final String? strMeasure20;
 
+  @override
   Map<String, dynamic> toJson() => {
-        "idMeal": idMeal,
-        "strMeal": strMeal,
-        "strMealThumb": strMealThumb,
+        "idMeal": super.idMeal,
+        "strMeal": super.strMeal,
+        "strMealThumb": super.strMealThumb,
         "strCategory": strCategory,
         "strArea": strArea,
         "strInstructions": strInstructions,
@@ -181,6 +182,59 @@ class MealDetails {
         "strMeasure20": strMeasure20,
       };
 
+  @override
+  List<Object?> get props => [
+        super.idMeal,
+        super.strMeal,
+        super.strMealThumb,
+        strCategory,
+        strArea,
+        strInstructions,
+        strTags,
+        strYoutube,
+        strIngredient1,
+        strIngredient2,
+        strIngredient3,
+        strIngredient4,
+        strIngredient5,
+        strIngredient6,
+        strIngredient7,
+        strIngredient8,
+        strIngredient9,
+        strIngredient10,
+        strIngredient11,
+        strIngredient12,
+        strIngredient13,
+        strIngredient14,
+        strIngredient15,
+        strIngredient16,
+        strIngredient17,
+        strIngredient18,
+        strIngredient19,
+        strIngredient20,
+        strMeasure1,
+        strMeasure2,
+        strMeasure3,
+        strMeasure4,
+        strMeasure5,
+        strMeasure6,
+        strMeasure7,
+        strMeasure8,
+        strMeasure9,
+        strMeasure10,
+        strMeasure11,
+        strMeasure12,
+        strMeasure13,
+        strMeasure14,
+        strMeasure15,
+        strMeasure16,
+        strMeasure17,
+        strMeasure18,
+        strMeasure19,
+        strMeasure20,
+      ];
+
+  @override
   MealDetails copyWith({
     String? idMeal,
     String? strMeal,
@@ -232,9 +286,9 @@ class MealDetails {
     String? strMeasure20,
   }) {
     return MealDetails(
-      idMeal: idMeal ?? this.idMeal,
-      strMeal: strMeal ?? this.strMeal,
-      strMealThumb: strMealThumb ?? this.strMealThumb,
+      idMeal: idMeal ?? super.idMeal,
+      strMeal: strMeal ?? super.strMeal,
+      strMealThumb: strMealThumb ?? super.strMealThumb,
       strCategory: strCategory ?? this.strCategory,
       strArea: strArea ?? this.strArea,
       strInstructions: strInstructions ?? this.strInstructions,
@@ -282,55 +336,4 @@ class MealDetails {
       strMeasure20: strMeasure20 ?? this.strMeasure20,
     );
   }
-
-  List<Object?> get props => [
-        idMeal,
-        strMeal,
-        strMealThumb,
-        strCategory,
-        strArea,
-        strInstructions,
-        strTags,
-        strYoutube,
-        strIngredient1,
-        strIngredient2,
-        strIngredient3,
-        strIngredient4,
-        strIngredient5,
-        strIngredient6,
-        strIngredient7,
-        strIngredient8,
-        strIngredient9,
-        strIngredient10,
-        strIngredient11,
-        strIngredient12,
-        strIngredient13,
-        strIngredient14,
-        strIngredient15,
-        strIngredient16,
-        strIngredient17,
-        strIngredient18,
-        strIngredient19,
-        strIngredient20,
-        strMeasure1,
-        strMeasure2,
-        strMeasure3,
-        strMeasure4,
-        strMeasure5,
-        strMeasure6,
-        strMeasure7,
-        strMeasure8,
-        strMeasure9,
-        strMeasure10,
-        strMeasure11,
-        strMeasure12,
-        strMeasure13,
-        strMeasure14,
-        strMeasure15,
-        strMeasure16,
-        strMeasure17,
-        strMeasure18,
-        strMeasure19,
-        strMeasure20,
-      ];
 }

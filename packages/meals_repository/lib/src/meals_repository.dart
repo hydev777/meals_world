@@ -78,14 +78,15 @@ class MealsRepository {
     try {
       final body = json.decode(response.body) as Map<String, dynamic>;
       return Meals(
-        meals: (body["meals"] as List<dynamic>).map(
-          (meal) {
-            return MealDetails(
+        meals: (body["meals"] as List<dynamic>)
+            .map(
+              (meal) => Meal(
                 strMeal: meal["strMeal"],
                 strMealThumb: meal["strMealThumb"],
-                idMeal: meal["idMeal"]);
-          },
-        ).toList(),
+                idMeal: meal["idMeal"],
+              ),
+            )
+            .toList(),
       );
     } catch (err) {
       print(err);
