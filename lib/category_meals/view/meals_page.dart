@@ -5,6 +5,30 @@ import 'package:meals_repository/meals_repository.dart';
 
 import '../cubit/meals_cubit.dart';
 
+class MealsPage extends StatelessWidget {
+  const MealsPage({
+    super.key,
+    required this.categoryId,
+    required this.category,
+  });
+
+  final String categoryId;
+  final Category category;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => MealsCubit(
+        mealsRepository: context.read<MealsRepository>(),
+      ),
+      child: MealsView(
+        categoryId: categoryId,
+        category: category,
+      ),
+    );
+  }
+}
+
 class MealsView extends StatefulWidget {
   const MealsView({
     super.key,

@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meals_repository/meals_repository.dart';
 
 import '../cubit/categories_cubit.dart';
+
+class CategoriesPage extends StatelessWidget {
+  const CategoriesPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => CategoriesCubit(
+        mealsRepository: context.read<MealsRepository>(),
+      ),
+      child: const CategoriesView(),
+    );
+  }
+}
 
 class CategoriesView extends StatefulWidget {
   const CategoriesView({super.key});

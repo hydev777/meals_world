@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import 'category_meals/view/meals_view.dart';
-import 'meal_categories/view/categories_view.dart';
-import 'category_meals/view/meal_details_view.dart';
+import 'category_meals/view/meals_page.dart';
+import 'meal_categories/view/categories_page.dart';
+import 'category_meals/view/meal_details_page.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
 final _nestedKey = GlobalKey<NavigatorState>();
@@ -25,18 +25,18 @@ final router = GoRouter(
       routes: [
         GoRoute(
           path: '/categories',
-          builder: (context, state) => const CategoriesView(),
+          builder: (context, state) => const CategoriesPage(),
         ),
         GoRoute(
           path: '/meals/category/:cid',
-          builder: (context, state) => MealsView(
+          builder: (context, state) => MealsPage(
             categoryId: state.pathParameters['cid']!,
             category: state.extra as Category,
           ),
         ),
         GoRoute(
           path: '/meals/:id',
-          builder: (context, state) => MealDetailsView(
+          builder: (context, state) => MealDetailsPage(
             mealId: state.pathParameters['id']!,
           ),
         ),

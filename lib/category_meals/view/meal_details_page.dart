@@ -1,7 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meals_repository/meals_repository.dart';
 
 import '../cubit/meals_cubit.dart';
+
+class MealDetailsPage extends StatelessWidget {
+  const MealDetailsPage({
+    super.key,
+    required this.mealId,
+  });
+
+  final String mealId;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => MealsCubit(
+        mealsRepository: context.read<MealsRepository>(),
+      ),
+      child: MealDetailsView(
+        mealId: mealId,
+      ),
+    );
+  }
+}
 
 class MealDetailsView extends StatefulWidget {
   const MealDetailsView({

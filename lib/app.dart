@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_repository/meals_repository.dart';
+import 'package:provider/provider.dart';
 
-import 'category_meals/cubit/meals_cubit.dart';
-import 'meal_categories/cubit/categories_cubit.dart';
 import 'router.dart';
 
 class App extends StatelessWidget {
@@ -16,17 +14,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        BlocProvider<CategoriesCubit>(
-          create: (context) => CategoriesCubit(
-            mealsRepository: mealsRepository,
-          ),
-        ),
-        BlocProvider<MealsCubit>(
-          create: (context) => MealsCubit(
-            mealsRepository: mealsRepository,
-          ),
+        Provider.value(
+          value: mealsRepository,
         ),
       ],
       child: MaterialApp.router(
