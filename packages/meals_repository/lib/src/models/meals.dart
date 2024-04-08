@@ -1,14 +1,16 @@
 import 'package:equatable/equatable.dart';
 
+import 'models.dart';
+
 class Meals extends Equatable {
   const Meals({
-    this.meals,
+    required this.meals,
   });
 
-  final List<Meal>? meals;
+  final List<MealDetails> meals;
 
   Meals copyWith({
-    List<Meal>? meals,
+    List<MealDetails>? meals,
   }) {
     return Meals(
       meals: meals ?? this.meals,
@@ -16,7 +18,7 @@ class Meals extends Equatable {
   }
 
   Map<String, dynamic> toJson() => {
-        "meals": meals!
+        "meals": meals
             .map(
               (meal) => meal.toJson(),
             )
@@ -26,42 +28,5 @@ class Meals extends Equatable {
   @override
   List<Object?> get props => [
         meals,
-      ];
-}
-
-class Meal extends Equatable {
-  const Meal({
-    this.strMeal,
-    this.strMealThumb,
-    this.idMeal,
-  });
-
-  final String? strMeal;
-  final String? strMealThumb;
-  final String? idMeal;
-
-  Meal copyWith({
-    String? strMeal,
-    String? strMealThumb,
-    String? idMeal,
-  }) {
-    return Meal(
-      strMeal: strMeal ?? this.strMeal,
-      strMealThumb: strMealThumb ?? this.strMealThumb,
-      idMeal: idMeal ?? this.idMeal,
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-        "strMeal": strMeal,
-        "strMealThumb": strMealThumb,
-        "idMeal": idMeal,
-      };
-
-  @override
-  List<Object?> get props => [
-        strMeal,
-        strMealThumb,
-        idMeal,
       ];
 }

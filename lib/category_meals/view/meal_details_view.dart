@@ -6,10 +6,10 @@ import '../cubit/category_meals_cubit.dart';
 class MealDetailsView extends StatefulWidget {
   const MealDetailsView({
     super.key,
-    this.mealId,
+    required this.mealId,
   });
 
-  final String? mealId;
+  final String mealId;
 
   @override
   State<MealDetailsView> createState() => _MealDetailsViewState();
@@ -20,7 +20,7 @@ class _MealDetailsViewState extends State<MealDetailsView> {
   void initState() {
     super.initState();
 
-    context.read<CategoryMealsCubit>().onFetchMealDetails(widget.mealId!);
+    context.read<MealsCubit>().onFetchMealDetails(widget.mealId);
   }
 
   @override
@@ -33,7 +33,7 @@ class _MealDetailsViewState extends State<MealDetailsView> {
           appBar: AppBar(
             title: const Text("Details"),
           ),
-          body: BlocBuilder<CategoryMealsCubit, CategoryMealsState>(
+          body: BlocBuilder<MealsCubit, MealsState>(
             builder: (context, state) {
               if (state.mealDetailsStatus == MealDetailsStatus.loading) {
                 return const Center(
@@ -42,12 +42,8 @@ class _MealDetailsViewState extends State<MealDetailsView> {
               }
 
               if (state.mealDetailsStatus == MealDetailsStatus.success) {
-                final mealDetails = context
-                    .watch<CategoryMealsCubit>()
-                    .state
-                    .mealDetail!
-                    .meals!
-                    .first;
+                final mealDetails =
+                    context.watch<MealsCubit>().state.mealDetail!.meals.first;
 
                 return Container(
                   padding: const EdgeInsets.all(10),
@@ -65,12 +61,12 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                             image: DecorationImage(
                               image: NetworkImage(
                                 context
-                                    .watch<CategoryMealsCubit>()
+                                    .watch<MealsCubit>()
                                     .state
                                     .mealDetail!
-                                    .meals!
+                                    .meals
                                     .first
-                                    .strMealThumb!,
+                                    .strMealThumb,
                               ),
                               fit: BoxFit.fitWidth,
                             ),
@@ -83,12 +79,12 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                           tag: "meal-detail-strMeal-${widget.mealId}",
                           child: Text(
                             context
-                                .watch<CategoryMealsCubit>()
+                                .watch<MealsCubit>()
                                 .state
                                 .mealDetail!
-                                .meals!
+                                .meals
                                 .first
-                                .strMeal!,
+                                .strMeal,
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../cubit/meal_categories_cubit.dart';
+import '../cubit/categories_cubit.dart';
 
-class MealCategoriesView extends StatefulWidget {
-  const MealCategoriesView({super.key});
+class CategoriesView extends StatefulWidget {
+  const CategoriesView({super.key});
 
   @override
-  State<MealCategoriesView> createState() => _MealCategoriesViewState();
+  State<CategoriesView> createState() => _CategoriesViewState();
 }
 
-class _MealCategoriesViewState extends State<MealCategoriesView> {
+class _CategoriesViewState extends State<CategoriesView> {
   @override
   void initState() {
     super.initState();
 
-    context.read<MealCategoriesCubit>().onFetchMealCategories();
+    context.read<CategoriesCubit>().onFetchMealCategories();
   }
 
   @override
@@ -26,7 +26,7 @@ class _MealCategoriesViewState extends State<MealCategoriesView> {
         appBar: AppBar(
           title: const Text("Categories"),
         ),
-        body: BlocBuilder<MealCategoriesCubit, MealCategoriesState>(
+        body: BlocBuilder<CategoriesCubit, CategoriesState>(
           builder: (context, state) {
             if (state.mealCategoriesStatus == MealCategoriesStatus.loading) {
               return const Center(
@@ -46,7 +46,7 @@ class _MealCategoriesViewState extends State<MealCategoriesView> {
                           child: ListTile(
                             onTap: () {
                               context.push(
-                                "/meal-list/${state.mealCategories!.categories![index].strCategory}",
+                                "/meals/category/${state.mealCategories!.categories![index].strCategory}",
                                 extra: state.mealCategories!.categories![index],
                               );
                             },

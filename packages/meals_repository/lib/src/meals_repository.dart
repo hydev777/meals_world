@@ -23,7 +23,7 @@ class MealsRepository {
   final http.Client _httpClient;
   final Uri? _baseUrl;
 
-  Future<MealCategories> fetchMealCategories() async {
+  Future<MealCategories> fetchCategories() async {
     http.Response? response;
     Uri mealsCategoriesUrl = _baseUrl!.replace(
       path: "/api/json/v1/1/categories.php",
@@ -42,23 +42,29 @@ class MealsRepository {
     try {
       final body = json.decode(response.body) as Map<String, dynamic>;
       return MealCategories(
-        categories: (body["categories"] as List)
-            .map(
-              (category) => Category(
-                idCategory: category["idCategory"],
-                strCategory: category["strCategory"],
-                strCategoryThumb: category["strCategoryThumb"],
-                strCategoryDescription: category["strCategoryDescription"],
-              ),
-            )
-            .toList(),
+        categories: (body["categories"] as List).map(
+          (category) {
+            print({
+              "=====>>",
+              category["idCategory"],
+              category["strCategory"],
+            });
+
+            return Category(
+              idCategory: category["idCategory"],
+              strCategory: category["strCategory"],
+              strCategoryThumb: category["strCategoryThumb"],
+              strCategoryDescription: category["strCategoryDescription"],
+            );
+          },
+        ).toList(),
       );
     } catch (err) {
       throw JsonDecodeException();
     }
   }
 
-  Future<Meals> fetchCategoryMeals(String categoryId) async {
+  Future<Meals> fetchMeals(String categoryId) async {
     http.Response? response;
     Uri categoryMeals = _baseUrl!.replace(
       path: "/api/json/v1/1/filter.php",
@@ -78,17 +84,19 @@ class MealsRepository {
     try {
       final body = json.decode(response.body) as Map<String, dynamic>;
       return Meals(
-        meals: (body["meals"] as List<dynamic>)
-            .map(
-              (meal) => Meal(
+        meals: (body["meals"] as List<dynamic>).map(
+          (meal) {
+            print(meal);
+
+            return MealDetails(
                 strMeal: meal["strMeal"],
                 strMealThumb: meal["strMealThumb"],
-                idMeal: meal["idMeal"],
-              ),
-            )
-            .toList(),
+                idMeal: meal["idMeal"]);
+          },
+        ).toList(),
       );
     } catch (err) {
+      print(err);
       throw JsonDecodeException();
     }
   }

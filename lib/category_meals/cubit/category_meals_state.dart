@@ -5,8 +5,8 @@ enum CategoryMealsStatus { initial, loading, success, empty, error }
 
 enum MealDetailsStatus { initial, loading, success, empty, error }
 
-class CategoryMealsState extends Equatable {
-  const CategoryMealsState({
+class MealsState extends Equatable {
+  const MealsState({
     this.categoryMealsStatus,
     this.mealDetailsStatus,
     this.meals,
@@ -18,13 +18,13 @@ class CategoryMealsState extends Equatable {
   final Meals? meals;
   final MealDetail? mealDetail;
 
-  CategoryMealsState copyWith({
+  MealsState copyWith({
     CategoryMealsStatus? categoryMealsStatus,
     MealDetailsStatus? mealDetailsStatus,
     Meals? meals,
     MealDetail? mealDetail,
   }) {
-    return CategoryMealsState(
+    return MealsState(
       categoryMealsStatus: categoryMealsStatus ?? this.categoryMealsStatus,
       mealDetailsStatus: mealDetailsStatus ?? this.mealDetailsStatus,
       meals: meals ?? this.meals,

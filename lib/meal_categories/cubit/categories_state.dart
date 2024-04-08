@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-part of 'meal_categories_cubit.dart';
+part of 'categories_cubit.dart';
 
 enum MealCategoriesStatus { initial, loading, success, empty, error }
 
-class MealCategoriesState extends Equatable {
-  const MealCategoriesState({
+class CategoriesState extends Equatable {
+  const CategoriesState({
     this.mealCategoriesStatus,
     this.mealCategories,
   });
@@ -12,11 +12,11 @@ class MealCategoriesState extends Equatable {
   final MealCategoriesStatus? mealCategoriesStatus;
   final MealCategories? mealCategories;
 
-  MealCategoriesState copyWith({
+  CategoriesState copyWith({
     MealCategoriesStatus? mealCategoriesStatus,
     MealCategories? mealCategories,
   }) {
-    return MealCategoriesState(
+    return CategoriesState(
       mealCategoriesStatus: mealCategoriesStatus ?? this.mealCategoriesStatus,
       mealCategories: mealCategories ?? this.mealCategories,
     );

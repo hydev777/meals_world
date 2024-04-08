@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_repository/meals_repository.dart';
 
 import 'category_meals/cubit/category_meals_cubit.dart';
-import 'meal_categories/cubit/meal_categories_cubit.dart';
+import 'meal_categories/cubit/categories_cubit.dart';
 import 'router.dart';
 
 class App extends StatelessWidget {
@@ -18,13 +18,13 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<MealCategoriesCubit>(
-          create: (context) => MealCategoriesCubit(
+        BlocProvider<CategoriesCubit>(
+          create: (context) => CategoriesCubit(
             mealsRepository: mealsRepository,
           ),
         ),
-        BlocProvider<CategoryMealsCubit>(
-          create: (context) => CategoryMealsCubit(
+        BlocProvider<MealsCubit>(
+          create: (context) => MealsCubit(
             mealsRepository: mealsRepository,
           ),
         ),

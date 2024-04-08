@@ -2,13 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-part 'meal_categories_state.dart';
+part 'categories_state.dart';
 
-class MealCategoriesCubit extends Cubit<MealCategoriesState> {
-  MealCategoriesCubit({
+class CategoriesCubit extends Cubit<CategoriesState> {
+  CategoriesCubit({
     required MealsRepository mealsRepository,
   })  : _mealsRepository = mealsRepository,
-        super(const MealCategoriesState());
+        super(const CategoriesState());
 
   final MealsRepository _mealsRepository;
 
@@ -20,7 +20,7 @@ class MealCategoriesCubit extends Cubit<MealCategoriesState> {
     );
 
     try {
-      final mealCategories = await _mealsRepository.fetchMealCategories();
+      final mealCategories = await _mealsRepository.fetchCategories();
 
       if (mealCategories.categories!.isNotEmpty) {
         emit(

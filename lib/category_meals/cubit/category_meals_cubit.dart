@@ -4,15 +4,15 @@ import 'package:meals_repository/meals_repository.dart';
 
 part 'category_meals_state.dart';
 
-class CategoryMealsCubit extends Cubit<CategoryMealsState> {
-  CategoryMealsCubit({
+class MealsCubit extends Cubit<MealsState> {
+  MealsCubit({
     required MealsRepository mealsRepository,
   })  : _mealsRepository = mealsRepository,
-        super(const CategoryMealsState());
+        super(const MealsState());
 
   final MealsRepository _mealsRepository;
 
-  Future<void> onFetchCategoryMeals(String categoryId) async {
+  Future<void> onFetchMeals(String categoryId) async {
     emit(
       state.copyWith(
         categoryMealsStatus: CategoryMealsStatus.loading,
@@ -20,10 +20,9 @@ class CategoryMealsCubit extends Cubit<CategoryMealsState> {
     );
 
     try {
-      final categoryMeals =
-          await _mealsRepository.fetchCategoryMeals(categoryId);
+      final categoryMeals = await _mealsRepository.fetchMeals(categoryId);
 
-      if (categoryMeals.meals!.isNotEmpty) {
+      if (categoryMeals.meals.isNotEmpty) {
         emit(
           state.copyWith(
             meals: categoryMeals,

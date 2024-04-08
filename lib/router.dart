@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import 'category_meals/view/category_meals_view.dart';
-import 'meal_categories/view/meal_categories_view.dart';
+import 'category_meals/view/meals_view.dart';
+import 'meal_categories/view/categories_view.dart';
 import 'category_meals/view/meal_details_view.dart';
 
 final _rootKey = GlobalKey<NavigatorState>();
@@ -24,24 +24,24 @@ final router = GoRouter(
       },
       routes: [
         GoRoute(
-          path: '/category-list',
-          builder: (context, state) => const MealCategoriesView(),
+          path: '/categories',
+          builder: (context, state) => const CategoriesView(),
         ),
         GoRoute(
-          path: '/meal-list/:id',
-          builder: (context, state) => CategoryMealsView(
-            categoryId: state.pathParameters['id'],
+          path: '/meals/category/:cid',
+          builder: (context, state) => MealsView(
+            categoryId: state.pathParameters['cid']!,
             category: state.extra as Category,
           ),
         ),
         GoRoute(
-          path: '/meal-detail/:id',
+          path: '/meals/:id',
           builder: (context, state) => MealDetailsView(
-            mealId: state.pathParameters['id'],
+            mealId: state.pathParameters['id']!,
           ),
         ),
       ],
     ),
   ],
-  initialLocation: "/category-list",
+  initialLocation: "/categories",
 );

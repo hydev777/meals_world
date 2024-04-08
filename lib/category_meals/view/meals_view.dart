@@ -5,30 +5,25 @@ import 'package:meals_repository/meals_repository.dart';
 
 import '../cubit/category_meals_cubit.dart';
 
-class CategoryMealsView extends StatefulWidget {
-  const CategoryMealsView({
+class MealsView extends StatefulWidget {
+  const MealsView({
     super.key,
-    this.categoryId,
-    this.category,
+    required this.categoryId,
+    required this.category,
   });
 
-  final String? categoryId;
-  final Category? category;
+  final String categoryId;
+  final Category category;
 
   @override
-  State<CategoryMealsView> createState() => _CategoryMealsViewState();
+  State<MealsView> createState() => _MealsViewState();
 }
 
-class _CategoryMealsViewState extends State<CategoryMealsView> {
+class _MealsViewState extends State<MealsView> {
   @override
   void initState() {
     super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await context
-          .read<CategoryMealsCubit>()
-          .onFetchCategoryMeals(widget.categoryId!);
-    });
+    context.read<MealsCubit>().onFetchMeals(widget.categoryId);
   }
 
   @override
@@ -36,7 +31,7 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xFFF9FAFA),
-        body: BlocBuilder<CategoryMealsCubit, CategoryMealsState>(
+        body: BlocBuilder<MealsCubit, MealsState>(
           builder: (context, state) {
             if (state.categoryMealsStatus == CategoryMealsStatus.loading) {
               return const Center(
@@ -55,10 +50,9 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
                     expandedHeight: 250.0,
                     flexibleSpace: FlexibleSpaceBar(
                       background: Hero(
-                        tag:
-                            "hero-meal-category-${widget.category!.idCategory}",
+                        tag: "hero-meal-category-${widget.category.idCategory}",
                         child: Image.network(
-                          widget.category!.strCategoryThumb!,
+                          widget.category.strCategoryThumb!,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -68,7 +62,7 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
                     child: Padding(
                       padding: const EdgeInsets.all(5),
                       child: Text(
-                        widget.category!.strCategory!,
+                        widget.category.strCategory!,
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -82,7 +76,7 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
                         return GestureDetector(
                           onTap: () {
                             context.push(
-                                "/meal-detail/${state.meals!.meals![index].idMeal}");
+                                "/meals/${state.meals!.meals[index].idMeal}");
                           },
                           child: Container(
                             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -108,17 +102,17 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
                                 borderRadius: BorderRadius.circular(10.0),
                                 child: Hero(
                                   tag:
-                                      "meal-detail-${state.meals!.meals![index].idMeal}",
+                                      "meal-detail-${state.meals!.meals[index].idMeal}",
                                   child: Image.network(
-                                    state.meals!.meals![index].strMealThumb!,
+                                    state.meals!.meals[index].strMealThumb,
                                   ),
                                 ),
                               ),
                               title: Hero(
                                 tag:
-                                    "meal-detail-strMeal-${state.meals!.meals![index].idMeal}",
+                                    "meal-detail-strMeal-${state.meals!.meals[index].idMeal}",
                                 child: Text(
-                                  state.meals!.meals![index].strMeal!,
+                                  state.meals!.meals[index].strMeal,
                                   style: const TextStyle(
                                     color: Color(0xFF535353),
                                     fontWeight: FontWeight.bold,
@@ -131,7 +125,7 @@ class _CategoryMealsViewState extends State<CategoryMealsView> {
                           ),
                         );
                       },
-                      childCount: state.meals!.meals!.length,
+                      childCount: state.meals!.meals.length,
                     ),
                   ),
                 ],
