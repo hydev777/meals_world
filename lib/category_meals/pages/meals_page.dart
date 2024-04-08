@@ -97,77 +97,8 @@ class _MealsViewState extends State<MealsView> {
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int index) {
-                        return GestureDetector(
-                          onTap: () {
-                            context.push(
-                                "/meals/${state.meals!.meals[index].idMeal}");
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
-                            height: 80,
-                            alignment: Alignment.centerRight,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  offset: Offset(3, 3),
-                                  blurStyle: BlurStyle.normal,
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                ),
-                              ],
-                            ),
-                            margin: const EdgeInsets.all(8),
-                            child: ListTile(
-                              contentPadding: const EdgeInsets.all(5),
-                              leading: ClipRRect(
-                                borderRadius: BorderRadius.circular(10.0),
-                                child: Hero(
-                                  tag:
-                                      "meal-detail-${state.meals!.meals[index].idMeal}",
-                                  child: Image.network(
-                                    state.meals!.meals[index].strMealThumb,
-                                    loadingBuilder:
-                                        (context, child, loadingProgress) {
-                                      if (loadingProgress != null) {
-                                        return const CircularProgressIndicator();
-                                      } else {
-                                        return child;
-                                      }
-                                    },
-                                    frameBuilder: (context, child, frame,
-                                        wasSynchronouslyLoaded) {
-                                      if (wasSynchronouslyLoaded) {
-                                        return child;
-                                      } else {
-                                        return AnimatedOpacity(
-                                          opacity: frame == null ? 0 : 1,
-                                          duration: const Duration(seconds: 1),
-                                          curve: Curves.easeOut,
-                                          child: child,
-                                        );
-                                      }
-                                    },
-                                  ),
-                                ),
-                              ),
-                              title: Hero(
-                                tag:
-                                    "meal-detail-strMeal-${state.meals!.meals[index].idMeal}",
-                                child: Text(
-                                  state.meals!.meals[index].strMeal,
-                                  style: const TextStyle(
-                                    color: Color(0xFF535353),
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                              trailing: const Icon(Icons.arrow_forward),
-                            ),
-                          ),
+                        return MealTile(
+                          meal: state.meals!.meals[index],
                         );
                       },
                       childCount: state.meals!.meals.length,
@@ -193,6 +124,86 @@ class _MealsViewState extends State<MealsView> {
               child: Text("An unexpected error has ocurred"),
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class MealTile extends StatelessWidget {
+  const MealTile({
+    super.key,
+    required this.meal,
+  });
+
+  final Meal meal;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        context.push("/meals/${meal.idMeal}");
+      },
+      child: Container(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        height: 80,
+        alignment: Alignment.centerRight,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              offset: Offset(3, 3),
+              blurStyle: BlurStyle.normal,
+              spreadRadius: 1,
+              blurRadius: 2,
+            ),
+          ],
+        ),
+        margin: const EdgeInsets.all(8),
+        child: ListTile(
+          contentPadding: const EdgeInsets.all(5),
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Hero(
+              tag: "meal-detail-${meal.idMeal}",
+              child: Image.network(
+                meal.strMealThumb,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress != null) {
+                    return const CircularProgressIndicator();
+                  } else {
+                    return child;
+                  }
+                },
+                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                  if (wasSynchronouslyLoaded) {
+                    return child;
+                  } else {
+                    return AnimatedOpacity(
+                      opacity: frame == null ? 0 : 1,
+                      duration: const Duration(seconds: 1),
+                      curve: Curves.easeOut,
+                      child: child,
+                    );
+                  }
+                },
+              ),
+            ),
+          ),
+          title: Hero(
+            tag: "meal-detail-strMeal-${meal.idMeal}",
+            child: Text(
+              meal.strMeal,
+              style: const TextStyle(
+                color: Color(0xFF535353),
+                fontWeight: FontWeight.normal,
+                fontSize: 16,
+              ),
+            ),
+          ),
+          trailing: const Icon(Icons.arrow_forward),
         ),
       ),
     );

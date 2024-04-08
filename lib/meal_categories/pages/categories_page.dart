@@ -55,46 +55,8 @@ class _CategoriesViewState extends State<CategoriesView> {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(6.0),
-                    child: ListTile(
-                      onTap: () {
-                        context.push(
-                          "/meals/category/${state.mealCategories!.categories[index].strCategory}",
-                          extra: state.mealCategories!.categories[index],
-                        );
-                      },
-                      leading: Hero(
-                        tag:
-                            "hero-meal-category-${state.mealCategories!.categories[index].idCategory}",
-                        child: Image.network(
-                          height: 70,
-                          width: 70,
-                          state.mealCategories!.categories[index]
-                              .strCategoryThumb,
-                          loadingBuilder: (context, child, loadingProgress) {
-                            if (loadingProgress != null) {
-                              return const CircularProgressIndicator();
-                            } else {
-                              return child;
-                            }
-                          },
-                          frameBuilder:
-                              (context, child, frame, wasSynchronouslyLoaded) {
-                            if (wasSynchronouslyLoaded) {
-                              return child;
-                            } else {
-                              return AnimatedOpacity(
-                                opacity: frame == null ? 0 : 1,
-                                duration: const Duration(seconds: 1),
-                                curve: Curves.easeOut,
-                                child: child,
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                      title: Text(
-                        state.mealCategories!.categories[index].strCategory,
-                      ),
+                    child: CategoryTile(
+                      category: state.mealCategories!.categories[index],
                     ),
                   );
                 },
@@ -102,22 +64,89 @@ class _CategoriesViewState extends State<CategoriesView> {
             }
 
             if (state.mealCategoriesStatus == MealCategoriesStatus.empty) {
-              return const Center(
-                child: Text("Categories are empty"),
+              return const StatusMessage(
+                message: "Categories are empty",
               );
             }
 
             if (state.mealCategoriesStatus == MealCategoriesStatus.error) {
-              return const Center(
-                child: Text("Could not get categories"),
+              return const StatusMessage(
+                message: "Could not get categories",
               );
             }
 
-            return const Center(
-              child: Text("An unexpected error has occurred!"),
+            return const StatusMessage(
+              message: "An unknown erro has ocurred!",
             );
           },
         ),
+      ),
+    );
+  }
+}
+
+class StatusMessage extends StatelessWidget {
+  const StatusMessage({
+    super.key,
+    required this.message,
+  });
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(message),
+    );
+  }
+}
+
+class CategoryTile extends StatelessWidget {
+  const CategoryTile({
+    super.key,
+    required this.category,
+  });
+
+  final Category category;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: () {
+        context.push(
+          "/meals/category/${category.strCategory}",
+          extra: category,
+        );
+      },
+      leading: Hero(
+        tag: "hero-meal-category-${category.idCategory}",
+        child: Image.network(
+          height: 70,
+          width: 70,
+          category.strCategoryThumb,
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress != null) {
+              return const CircularProgressIndicator();
+            } else {
+              return child;
+            }
+          },
+          frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+            if (wasSynchronouslyLoaded) {
+              return child;
+            } else {
+              return AnimatedOpacity(
+                opacity: frame == null ? 0 : 1,
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeOut,
+                child: child,
+              );
+            }
+          },
+        ),
+      ),
+      title: Text(
+        category.strCategory,
       ),
     );
   }
