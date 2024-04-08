@@ -87,7 +87,7 @@ class _CategoriesViewState extends State<CategoriesView> {
 
             if (state.mealCategoriesStatus == MealCategoriesStatus.error) {
               return const Center(
-                child: Text("An error has occurred!"),
+                child: Text("Could not get categories"),
               );
             }
 

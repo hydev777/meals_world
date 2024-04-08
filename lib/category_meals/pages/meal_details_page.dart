@@ -477,7 +477,7 @@ class _MealDetailsViewState extends State<MealDetailsView> {
 
               if (state.mealDetailsStatus == MealDetailsStatus.error) {
                 return const Center(
-                  child: Text("An error has ocurred!"),
+                  child: Text("Could not get meals details"),
                 );
               }
 
