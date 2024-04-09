@@ -64,8 +64,7 @@ class _MealDetailsViewState extends State<MealDetailsView> {
               }
 
               if (state.mealDetailsStatus == MealDetailsStatus.success) {
-                final mealDetails =
-                    context.watch<MealsCubit>().state.mealDetail!.meals.first;
+                final MealDetails mealDetails = state.mealDetail!.meals.first;
 
                 return Container(
                   padding: const EdgeInsets.all(10),
@@ -82,13 +81,7 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                             color: Colors.blueAccent,
                             image: DecorationImage(
                               image: NetworkImage(
-                                context
-                                    .watch<MealsCubit>()
-                                    .state
-                                    .mealDetail!
-                                    .meals
-                                    .first
-                                    .strMealThumb,
+                                state.mealDetail!.meals.first.strMealThumb,
                               ),
                               fit: BoxFit.fitWidth,
                             ),
@@ -100,13 +93,7 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                         child: Hero(
                           tag: "meal-detail-strMeal-${widget.mealId}",
                           child: Text(
-                            context
-                                .watch<MealsCubit>()
-                                .state
-                                .mealDetail!
-                                .meals
-                                .first
-                                .strMeal,
+                            mealDetails.strMeal,
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
