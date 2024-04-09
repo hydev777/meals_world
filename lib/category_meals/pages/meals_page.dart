@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import '../../gen/widgets.dart';
+import '../../shared/widgets.dart';
 import '../cubit/meals_cubit.dart';
 
 class MealsPage extends StatelessWidget {

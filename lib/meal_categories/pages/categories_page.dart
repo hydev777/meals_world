@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import '../../gen/widgets.dart';
+import '../../shared/dark_mode_handle.dart';
+import '../../shared/widgets.dart';
 import '../cubit/categories_cubit.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -37,10 +38,20 @@ class _CategoriesViewState extends State<CategoriesView> {
 
   @override
   Widget build(BuildContext context) {
+    final dakModeHandler = context.watch<DarkModeHandler>();
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Categories"),
+          actions: [
+            Checkbox(
+              value: dakModeHandler.isDarkMode,
+              onChanged: (calue) {
+                dakModeHandler.switchDarkMode();
+              },
+            ),
+          ],
         ),
         body: BlocBuilder<CategoriesCubit, CategoriesState>(
           builder: (context, state) {
@@ -54,11 +65,8 @@ class _CategoriesViewState extends State<CategoriesView> {
               return ListView.builder(
                 itemCount: state.mealCategories!.categories.length,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: CategoryTile(
-                      category: state.mealCategories!.categories[index],
-                    ),
+                  return CategoryTile(
+                    category: state.mealCategories!.categories[index],
                   );
                 },
               );
@@ -96,42 +104,45 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        context.push(
-          "/meals/category/${category.strCategory}",
-          extra: category,
-        );
-      },
-      leading: Hero(
-        tag: "hero-meal-category-${category.idCategory}",
-        child: Image.network(
-          height: 70,
-          width: 70,
-          category.strCategoryThumb,
-          loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress != null) {
-              return const CircularProgressIndicator();
-            } else {
-              return child;
-            }
-          },
-          frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-            if (wasSynchronouslyLoaded) {
-              return child;
-            } else {
-              return AnimatedOpacity(
-                opacity: frame == null ? 0 : 1,
-                duration: const Duration(seconds: 1),
-                curve: Curves.easeOut,
-                child: child,
-              );
-            }
-          },
+    return Padding(
+      padding: const EdgeInsets.all(6.0),
+      child: ListTile(
+        onTap: () {
+          context.push(
+            "/meals/category/${category.strCategory}",
+            extra: category,
+          );
+        },
+        leading: Hero(
+          tag: "hero-meal-category-${category.idCategory}",
+          child: Image.network(
+            height: 70,
+            width: 70,
+            category.strCategoryThumb,
+            loadingBuilder: (context, child, loadingProgress) {
+              if (loadingProgress != null) {
+                return const CircularProgressIndicator();
+              } else {
+                return child;
+              }
+            },
+            frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+              if (wasSynchronouslyLoaded) {
+                return child;
+              } else {
+                return AnimatedOpacity(
+                  opacity: frame == null ? 0 : 1,
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeOut,
+                  child: child,
+                );
+              }
+            },
+          ),
         ),
-      ),
-      title: Text(
-        category.strCategory,
+        title: Text(
+          category.strCategory,
+        ),
       ),
     );
   }

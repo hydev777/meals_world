@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import '../../gen/widgets.dart';
+import '../../shared/widgets.dart';
 import '../cubit/meals_cubit.dart';
 
 class MealDetailsPage extends StatelessWidget {
@@ -98,7 +98,6 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF535353),
                             ),
                           ),
                         ),
