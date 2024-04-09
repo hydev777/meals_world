@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
+import '../../gen/widgets.dart';
 import '../cubit/meals_cubit.dart';
 
 class MealsPage extends StatelessWidget {
@@ -109,19 +110,19 @@ class _MealsViewState extends State<MealsView> {
             }
 
             if (state.categoryMealsStatus == CategoryMealsStatus.empty) {
-              return const Center(
-                child: Text("Categories are empty"),
+              return const StatusMessage(
+                message: "Categories are empty",
               );
             }
 
             if (state.categoryMealsStatus == CategoryMealsStatus.error) {
-              return const Center(
-                child: Text("Could not get meals"),
+              return const StatusMessage(
+                message: "Could not get meals",
               );
             }
 
-            return const Center(
-              child: Text("An unexpected error has ocurred"),
+            return const StatusMessage(
+              message: "An unexpected error has ocurred",
             );
           },
         ),

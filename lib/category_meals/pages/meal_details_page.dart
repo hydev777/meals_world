@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meals_repository/meals_repository.dart';
 
+import '../../gen/widgets.dart';
 import '../cubit/meals_cubit.dart';
 
 class MealDetailsPage extends StatelessWidget {
@@ -141,31 +142,17 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient1 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient1 ??
-                                                    ""),
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient1 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient2 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient2 ??
-                                                    ""),
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient2 ?? "-",
                                         ),
                                       ),
                                       Visibility(
@@ -176,10 +163,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient3 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient3 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -191,10 +177,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient4 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient4 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -206,10 +191,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient5 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient5 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -221,10 +205,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient6 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient6 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -236,10 +219,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient7 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient7 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -251,10 +233,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient8 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient8 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -266,10 +247,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient9 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient9 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -281,10 +261,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient10 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient10 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -296,10 +275,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient11 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient11 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -311,10 +289,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient12 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient12 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -326,10 +303,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient13 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient13 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -341,10 +317,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient14 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient14 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -356,10 +331,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient15 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient15 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -371,10 +345,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient16 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient16 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -386,10 +359,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient17 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient17 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -401,10 +373,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient18 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient18 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -416,10 +387,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient19 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient19 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -431,10 +401,9 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                           decoration: const BoxDecoration(
                                             color: Colors.white,
                                           ),
-                                          child: ListTile(
-                                            title: Text(
-                                                mealDetails.strIngredient20 ??
-                                                    ""),
+                                          child: IngredientTile(
+                                            name: mealDetails.strIngredient20 ??
+                                                "-",
                                           ),
                                         ),
                                       ),
@@ -463,17 +432,39 @@ class _MealDetailsViewState extends State<MealDetailsView> {
               }
 
               if (state.mealDetailsStatus == MealDetailsStatus.error) {
-                return const Center(
-                  child: Text("Could not get meals details"),
+                return const StatusMessage(
+                  message: "Could not get meals details",
                 );
               }
 
-              return const Center(
-                child: Text("An unexpected error has ocurred!"),
+              return const StatusMessage(
+                message: "An unexpected error has ocurred!",
               );
             },
           ),
         ),
+      ),
+    );
+  }
+}
+
+class IngredientTile extends StatelessWidget {
+  const IngredientTile({
+    super.key,
+    required this.name,
+  });
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+      ),
+      child: ListTile(
+        title: Text(name),
       ),
     );
   }

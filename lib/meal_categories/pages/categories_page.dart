@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
+import '../../gen/widgets.dart';
 import '../cubit/categories_cubit.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -81,22 +82,6 @@ class _CategoriesViewState extends State<CategoriesView> {
           },
         ),
       ),
-    );
-  }
-}
-
-class StatusMessage extends StatelessWidget {
-  const StatusMessage({
-    super.key,
-    required this.message,
-  });
-
-  final String message;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(message),
     );
   }
 }
