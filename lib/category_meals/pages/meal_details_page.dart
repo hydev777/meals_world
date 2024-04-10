@@ -79,7 +79,6 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.blueAccent,
                             image: DecorationImage(
                               image: NetworkImage(
                                 state.mealDetail!.meals.first.strMealThumb,
@@ -105,7 +104,6 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                       Container(
                         height: 45,
                         decoration: BoxDecoration(
-                          // color: Colors.grey[300],
                           borderRadius: BorderRadius.circular(
                             25.0,
                           ),
@@ -115,14 +113,11 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                             borderRadius: BorderRadius.circular(
                               15.0,
                             ),
-                            color: Colors.green,
                           ),
-                          labelColor: Colors.white,
-                          unselectedLabelColor: Colors.black,
                           indicatorSize: TabBarIndicatorSize.tab,
                           tabs: const <Widget>[
                             Tab(
-                              child: Text("Ingridents"),
+                              child: Text("Ingridients"),
                             ),
                             Tab(
                               child: Text("Procedure"),
@@ -157,253 +152,145 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient3 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient3 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient3 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient4 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient4 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient4 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient5 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient5 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient5 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient6 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient6 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient6 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient7 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient7 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient7 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient8 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient8 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient8 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient9 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient9 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name:
+                                              mealDetails.strIngredient9 ?? "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient10 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient10 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient10 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient11 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient11 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient11 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient12 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient12 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient12 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient13 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient13 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient13 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient14 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient14 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient14 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient15 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient15 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient15 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient16 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient16 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient16 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient17 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient17 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient17 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient18 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient18 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient18 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient19 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient19 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient19 ??
+                                              "-",
                                         ),
                                       ),
                                       Visibility(
                                         visible:
                                             mealDetails.strIngredient20 != null,
-                                        child: Container(
-                                          height: 50,
-                                          decoration: const BoxDecoration(
-                                            color: Colors.white,
-                                          ),
-                                          child: IngredientTile(
-                                            name: mealDetails.strIngredient20 ??
-                                                "-",
-                                          ),
+                                        child: IngredientTile(
+                                          name: mealDetails.strIngredient20 ??
+                                              "-",
                                         ),
                                       ),
                                     ],
@@ -457,13 +344,12 @@ class IngredientTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 50,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-      ),
       child: ListTile(
-        title: Text(name),
+        title: Text(
+          name,
+        ),
       ),
     );
   }

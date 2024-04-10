@@ -55,7 +55,6 @@ class _MealsViewState extends State<MealsView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xFFF9FAFA),
         body: BlocBuilder<MealsCubit, MealsState>(
           builder: (context, state) {
             if (state.categoryMealsStatus == CategoryMealsStatus.loading) {
@@ -150,17 +149,7 @@ class MealTile extends StatelessWidget {
         height: 80,
         alignment: Alignment.centerRight,
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(3, 3),
-              blurStyle: BlurStyle.normal,
-              spreadRadius: 1,
-              blurRadius: 2,
-            ),
-          ],
         ),
         margin: const EdgeInsets.all(8),
         child: ListTile(
@@ -198,7 +187,6 @@ class MealTile extends StatelessWidget {
             child: Text(
               meal.strMeal,
               style: const TextStyle(
-                color: Color(0xFF535353),
                 fontWeight: FontWeight.normal,
                 fontSize: 16,
               ),
