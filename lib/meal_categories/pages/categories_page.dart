@@ -50,7 +50,10 @@ class _CategoriesViewState extends State<CategoriesView> {
                 context.read<DarkModeHandler>().switchDarkMode();
               },
               icon: isDarkMode
-                  ? const Icon(Icons.sunny)
+                  ? const Icon(
+                      Icons.sunny,
+                      color: Colors.yellow,
+                    )
                   : const Icon(Icons.nightlight_round_outlined),
             ),
           ],
