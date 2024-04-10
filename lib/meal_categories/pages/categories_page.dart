@@ -38,18 +38,20 @@ class _CategoriesViewState extends State<CategoriesView> {
 
   @override
   Widget build(BuildContext context) {
-    final dakModeHandler = context.watch<DarkModeHandler>();
+    final isDarkMode = context.watch<DarkModeHandler>().isDarkMode;
 
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Categories"),
           actions: [
-            Checkbox(
-              value: dakModeHandler.isDarkMode,
-              onChanged: (calue) {
-                dakModeHandler.switchDarkMode();
+            IconButton(
+              onPressed: () {
+                context.read<DarkModeHandler>().switchDarkMode();
               },
+              icon: isDarkMode
+                  ? const Icon(Icons.sunny)
+                  : const Icon(Icons.nightlight_round_outlined),
             ),
           ],
         ),
