@@ -16,7 +16,7 @@ class CategoriesPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => CategoriesCubit(
         mealsRepository: context.read<MealsRepository>(),
-      ),
+      )..onFetchMealCategories(),
       child: const CategoriesView(),
     );
   }
@@ -30,13 +30,6 @@ class CategoriesView extends StatefulWidget {
 }
 
 class _CategoriesViewState extends State<CategoriesView> {
-  @override
-  void initState() {
-    super.initState();
-
-    context.read<CategoriesCubit>().onFetchMealCategories();
-  }
-
   @override
   Widget build(BuildContext context) {
     final isDarkMode = context.watch<DarkModeHandler>().isDarkMode;

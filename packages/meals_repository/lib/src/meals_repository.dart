@@ -158,6 +158,8 @@ class MealsRepository {
             .toList(),
       );
     } catch (err) {
+      print(mealDetails);
+      print(err);
       throw JsonDecodeException();
     }
   }

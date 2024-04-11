@@ -62,6 +62,7 @@ class MealsCubit extends Cubit<MealsState> {
         ),
       );
     } catch (err) {
+      print(err);
       emit(
         state.copyWith(
           mealDetailsStatus: MealDetailsStatus.error,

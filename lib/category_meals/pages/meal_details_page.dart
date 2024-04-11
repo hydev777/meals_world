@@ -20,7 +20,7 @@ class MealDetailsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => MealsCubit(
         mealsRepository: context.read<MealsRepository>(),
-      ),
+      )..onFetchMealDetails(mealId),
       child: MealDetailsView(
         mealId: mealId,
       ),
@@ -41,13 +41,6 @@ class MealDetailsView extends StatefulWidget {
 }
 
 class _MealDetailsViewState extends State<MealDetailsView> {
-  @override
-  void initState() {
-    super.initState();
-
-    context.read<MealsCubit>().onFetchMealDetails(widget.mealId);
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
