@@ -22,7 +22,7 @@ class MealsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => MealsCubit(
         mealsRepository: context.read<MealsRepository>(),
-      )..onFetchMealDetails(categoryId),
+      )..onFetchMeals(categoryId),
       child: MealsView(
         categoryId: categoryId,
         category: category,
