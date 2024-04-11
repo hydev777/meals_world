@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
-import '../../category_meals/widgets/photo_hero.dart';
+import '../../shared/widgets/photo_hero.dart';
 import '../../dark_mode_handle.dart';
 import '../../shared/widgets/status_message.dart';
 import '../cubit/categories_cubit.dart';

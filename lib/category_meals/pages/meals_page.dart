@@ -5,7 +5,7 @@ import 'package:meals_repository/meals_repository.dart';
 
 import '../../shared/widgets/status_message.dart';
 import '../cubit/meals_cubit.dart';
-import '../widgets/photo_hero.dart';
+import '../../shared/widgets/photo_hero.dart';
 
 class MealsPage extends StatelessWidget {
   const MealsPage({

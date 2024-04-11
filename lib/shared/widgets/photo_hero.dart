@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/widgets/image_widget.dart';
+import 'image_widget.dart';
 
 class PhotoHero extends StatelessWidget {
   const PhotoHero({
