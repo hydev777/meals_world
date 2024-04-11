@@ -35,10 +35,6 @@ class MealsRepository {
       throw HttpException();
     }
 
-    if (response.statusCode != 200) {
-      throw HttpRequestFailure(response.statusCode);
-    }
-
     try {
       final body = json.decode(response.body) as Map<String, dynamic>;
       return MealCategories(
@@ -71,10 +67,6 @@ class MealsRepository {
       throw HttpException();
     }
 
-    if (response.statusCode != 200) {
-      throw HttpRequestFailure(response.statusCode);
-    }
-
     try {
       final body = json.decode(response.body) as Map<String, dynamic>;
       return Meals(
@@ -105,10 +97,6 @@ class MealsRepository {
       response = await _httpClient.get(mealDetails);
     } catch (err) {
       throw HttpException();
-    }
-
-    if (response.statusCode != 200) {
-      throw HttpRequestFailure(response.statusCode);
     }
 
     try {
