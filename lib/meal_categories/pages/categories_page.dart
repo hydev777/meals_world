@@ -5,7 +5,7 @@ import 'package:meals_repository/meals_repository.dart';
 
 import '../../category_meals/widgets/photo_hero.dart';
 import '../../dark_mode_handle.dart';
-import '../../shared/widgets.dart';
+import '../../shared/widgets/status_message.dart';
 import '../cubit/categories_cubit.dart';
 
 class CategoriesPage extends StatelessWidget {
