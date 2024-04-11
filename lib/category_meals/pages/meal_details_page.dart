@@ -124,160 +124,200 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                                   ListView(
                                     children: [
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient1 != null,
+                                        visible: mealDetails.strIngredient1 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient1!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient1 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient2 != null,
+                                        visible: mealDetails.strIngredient2 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient2!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient2 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient3 != null,
+                                        visible: mealDetails.strIngredient3 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient3!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient3 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient4 != null,
+                                        visible: mealDetails.strIngredient4 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient4!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient4 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient5 != null,
+                                        visible: mealDetails.strIngredient5 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient5!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient5 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient6 != null,
+                                        visible: mealDetails.strIngredient6 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient6!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient6 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient7 != null,
+                                        visible: mealDetails.strIngredient7 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient7!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient7 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient8 != null,
+                                        visible: mealDetails.strIngredient8 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient8!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient8 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient9 != null,
+                                        visible: mealDetails.strIngredient9 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient9!.isNotEmpty,
                                         child: IngredientTile(
                                           name:
                                               mealDetails.strIngredient9 ?? "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient10 != null,
+                                        visible: mealDetails.strIngredient10 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient10!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient10 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient11 != null,
+                                        visible: mealDetails.strIngredient11 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient11!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient11 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient12 != null,
+                                        visible: mealDetails.strIngredient12 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient12!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient12 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient13 != null,
+                                        visible: mealDetails.strIngredient13 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient13!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient13 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient14 != null,
+                                        visible: mealDetails.strIngredient14 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient14!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient14 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient15 != null,
+                                        visible: mealDetails.strIngredient15 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient15!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient15 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient16 != null,
+                                        visible: mealDetails.strIngredient16 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient16!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient16 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient17 != null,
+                                        visible: mealDetails.strIngredient17 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient17!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient17 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient18 != null,
+                                        visible: mealDetails.strIngredient18 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient18!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient18 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient19 != null,
+                                        visible: mealDetails.strIngredient19 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient19!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient19 ??
                                               "-",
                                         ),
                                       ),
                                       Visibility(
-                                        visible:
-                                            mealDetails.strIngredient20 != null,
+                                        visible: mealDetails.strIngredient20 !=
+                                                null &&
+                                            mealDetails
+                                                .strIngredient20!.isNotEmpty,
                                         child: IngredientTile(
                                           name: mealDetails.strIngredient20 ??
                                               "-",
@@ -337,6 +377,9 @@ class IngredientTile extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: ListTile(
+        leading: ImageWidget(
+          src: "https://www.themealdb.com/images/ingredients/$name.png",
+        ),
         title: Text(
           name,
         ),
