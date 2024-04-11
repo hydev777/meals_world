@@ -5,6 +5,7 @@ import 'package:meals_repository/meals_repository.dart';
 
 import '../../shared/widgets.dart';
 import '../cubit/meals_cubit.dart';
+import '../widgets/photo_hero.dart';
 
 class MealsPage extends StatelessWidget {
   const MealsPage({
@@ -73,12 +74,10 @@ class _MealsViewState extends State<MealsView> {
                     stretchTriggerOffset: 300.0,
                     expandedHeight: 250.0,
                     flexibleSpace: FlexibleSpaceBar(
-                      background: Hero(
-                        tag: "hero-meal-category-${widget.category.idCategory}",
-                        child: Image.network(
-                          widget.category.strCategoryThumb,
-                          fit: BoxFit.cover,
-                        ),
+                      background: PhotoHero(
+                        photo: widget.category.strCategoryThumb,
+                        heigth: 50,
+                        width: 50,
                       ),
                     ),
                   ),
@@ -140,60 +139,29 @@ class MealTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.push("/meals/${meal.idMeal}");
-      },
-      child: Container(
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        height: 80,
-        alignment: Alignment.centerRight,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+    return Padding(
+      padding: const EdgeInsets.all(6.0),
+      child: ListTile(
+        onTap: () {
+          context.push("/meals/${meal.idMeal}");
+        },
+        contentPadding: const EdgeInsets.all(5),
+        leading: PhotoHero(
+          photo: meal.strMealThumb,
+          heigth: 50,
+          width: 50,
         ),
-        margin: const EdgeInsets.all(8),
-        child: ListTile(
-          contentPadding: const EdgeInsets.all(5),
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Hero(
-              tag: "meal-detail-${meal.idMeal}",
-              child: Image.network(
-                meal.strMealThumb,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress != null) {
-                    return const CircularProgressIndicator();
-                  } else {
-                    return child;
-                  }
-                },
-                frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                  if (wasSynchronouslyLoaded) {
-                    return child;
-                  } else {
-                    return AnimatedOpacity(
-                      opacity: frame == null ? 0 : 1,
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeOut,
-                      child: child,
-                    );
-                  }
-                },
-              ),
+        title: Hero(
+          tag: "meal-detail-strMeal-${meal.idMeal}",
+          child: Text(
+            meal.strMeal,
+            style: const TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 16,
             ),
           ),
-          title: Hero(
-            tag: "meal-detail-strMeal-${meal.idMeal}",
-            child: Text(
-              meal.strMeal,
-              style: const TextStyle(
-                fontWeight: FontWeight.normal,
-                fontSize: 16,
-              ),
-            ),
-          ),
-          trailing: const Icon(Icons.arrow_forward),
         ),
+        trailing: const Icon(Icons.arrow_forward),
       ),
     );
   }

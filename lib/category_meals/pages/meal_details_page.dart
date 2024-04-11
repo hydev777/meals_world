@@ -4,6 +4,8 @@ import 'package:meals_repository/meals_repository.dart';
 
 import '../../shared/widgets.dart';
 import '../cubit/meals_cubit.dart';
+import '../widgets/photo_hero.dart';
+import 'meals_page.dart';
 
 class MealDetailsPage extends StatelessWidget {
   const MealDetailsPage({
@@ -72,21 +74,10 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Hero(
-                        tag: "meal-detail-${widget.mealId}",
-                        child: Container(
-                          height: 180,
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                state.mealDetail!.meals.first.strMealThumb,
-                              ),
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                        ),
+                      PhotoHero(
+                        photo: state.mealDetail!.meals.first.strMealThumb,
+                        heigth: 180,
+                        width: double.infinity,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(5),
@@ -117,7 +108,7 @@ class _MealDetailsViewState extends State<MealDetailsView> {
                           indicatorSize: TabBarIndicatorSize.tab,
                           tabs: const <Widget>[
                             Tab(
-                              child: Text("Ingridients"),
+                              child: Text("Ingredients"),
                             ),
                             Tab(
                               child: Text("Procedure"),

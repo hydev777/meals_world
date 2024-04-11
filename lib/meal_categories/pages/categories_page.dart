@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
+import '../../category_meals/widgets/photo_hero.dart';
 import '../../shared/dark_mode_handle.dart';
 import '../../shared/widgets.dart';
 import '../cubit/categories_cubit.dart';
@@ -118,32 +119,10 @@ class CategoryTile extends StatelessWidget {
             extra: category,
           );
         },
-        leading: Hero(
-          tag: "hero-meal-category-${category.idCategory}",
-          child: Image.network(
-            height: 70,
-            width: 70,
-            category.strCategoryThumb,
-            loadingBuilder: (context, child, loadingProgress) {
-              if (loadingProgress != null) {
-                return const CircularProgressIndicator();
-              } else {
-                return child;
-              }
-            },
-            frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-              if (wasSynchronouslyLoaded) {
-                return child;
-              } else {
-                return AnimatedOpacity(
-                  opacity: frame == null ? 0 : 1,
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.easeOut,
-                  child: child,
-                );
-              }
-            },
-          ),
+        leading: PhotoHero(
+          photo: category.strCategoryThumb,
+          heigth: 70,
+          width: 70,
         ),
         title: Text(
           category.strCategory,
