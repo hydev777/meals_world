@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 import 'app.dart';
-import 'shared/dark_mode_handle.dart';
+import 'dark_mode_handle.dart';
 
 void main() {
   final mealsRepository = MealsRepository(

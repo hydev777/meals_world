@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:meals_repository/meals_repository.dart';
 
 import '../../category_meals/widgets/photo_hero.dart';
-import '../../shared/dark_mode_handle.dart';
+import '../../dark_mode_handle.dart';
 import '../../shared/widgets.dart';
 import '../cubit/categories_cubit.dart';
 

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'router.dart';
 import 'shared/app_theme.dart';
-import 'shared/dark_mode_handle.dart';
+import 'dark_mode_handle.dart';
 
 class App extends StatefulWidget {
   const App({
