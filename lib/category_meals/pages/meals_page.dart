@@ -24,7 +24,6 @@ class MealsPage extends StatelessWidget {
         mealsRepository: context.read<MealsRepository>(),
       )..onFetchMeals(categoryId),
       child: MealsView(
-        categoryId: categoryId,
         category: category,
       ),
     );
@@ -34,11 +33,9 @@ class MealsPage extends StatelessWidget {
 class MealsView extends StatefulWidget {
   const MealsView({
     super.key,
-    required this.categoryId,
     required this.category,
   });
 
-  final String categoryId;
   final Category category;
 
   @override
