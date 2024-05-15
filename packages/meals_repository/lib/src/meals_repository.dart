@@ -23,6 +23,8 @@ class MealsRepository {
   final http.Client _httpClient;
   final Uri? _baseUrl;
 
+  /// Fetch list of categories of meals
+
   Future<MealCategories> fetchCategories() async {
     http.Response? response;
     Uri mealsCategoriesUrl = _baseUrl!.replace(
@@ -53,6 +55,8 @@ class MealsRepository {
       throw JsonDecodeException();
     }
   }
+
+    /// Fetch list of meals in selected cateogry
 
   Future<Meals> fetchMeals(String categoryId) async {
     http.Response? response;
@@ -85,6 +89,8 @@ class MealsRepository {
       throw JsonDecodeException();
     }
   }
+
+  /// Fetch all details of selected meal
 
   Future<MealDetail> fetchMealsDetails(String mealId) async {
     http.Response? response;
